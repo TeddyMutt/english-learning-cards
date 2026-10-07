@@ -1,9 +1,8 @@
 let currentWord = null;
 
-function newCard(){
+function newCard() {
 
-    currentWord =
-        words[Math.floor(Math.random() * words.length)];
+    currentWord = words[Math.floor(Math.random() * words.length)];
 
     document.getElementById("english").innerText =
         currentWord.english;
@@ -23,27 +22,14 @@ function newCard(){
     document.getElementById("examplePinyin").innerText =
         currentWord.example.pinyin;
 
-    document
-        .getElementById("cardInner")
+    document.getElementById("cardInner")
         .classList.remove("flipped");
 }
 
-function flipCard(){
+function flipCard() {
 
-    document
-        .getElementById("cardInner")
+    document.getElementById("cardInner")
         .classList.toggle("flipped");
-
-}
-
-function speakWord(){
-
-    let speech =
-        new SpeechSynthesisUtterance(currentWord.english);
-
-    speech.lang="en-AU";
-
-    speechSynthesis.speak(speech);
 
 }
 
