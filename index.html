@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Learning Cards</title>
 
-    style.css
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <h1>English Learning Cards</h1>
 
-    <div class="controls">
-        <button onclick="newCard()">Next Card</button>
-        <button onclick="speakWord()">🔊 Pronounce</button>
-    </div>
+    <button onclick="newCard()">Next Card</button>
 
     <div class="card" onclick="flipCard()">
 
@@ -27,15 +22,12 @@
             </div>
 
             <div class="card-back">
-
                 <h2 id="traditional"></h2>
                 <h3 id="pinyin"></h3>
 
-                <div class="example">
-                    <p id="exampleEnglish"></p>
-                    <p id="exampleChinese"></p>
-                    <p id="examplePinyin"></p>
-                </div>
+                <p id="exampleEnglish"></p>
+                <p id="exampleChinese"></p>
+                <p id="examplePinyin"></p>
 
             </div>
 
@@ -47,5 +39,4 @@
     <script src="app.js"></script>
 
 </body>
-
 </html>
