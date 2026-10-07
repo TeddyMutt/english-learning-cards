@@ -2,7 +2,11 @@ let currentWord = null;
 
 function newCard() {
 
-    currentWord = words[Math.floor(Math.random() * words.length)];
+
+currentWord = words[Math.floor(Math.random() * words.length)];
+
+document.getElementById("wordCount").innerText =
+    "Words loaded: " + words.length;
 
     document.getElementById("english").innerText =
         currentWord.english;
