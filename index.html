@@ -2,64 +2,46 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>English Learning Cards</title>
+  <title>English Learning Cards</title>
 
-style.css
+  style.css
 </head>
 
 <body>
 
-<h1>English Learning Cards</h1>
+  <h1>English Learning Cards</h1>
 
-<div class="controls">
+  <div class="controls">
+    <button onclick="newCard()">Next Card</button>
+    <button onclick="speakWord()">🔊 Pronounce</button>
+  </div>
 
-<button onclick="newCard()">
-Next Card
-</button>
+  <div class="card" onclick="flipCard()">
+    <div id="cardInner" class="card-inner">
 
-<button onclick="speakWord()">
-🔊 Pronounce
-</button>
+      <div class="card-front">
+        <h2 id="english"></h2>
+      </div>
 
-</div>
+      <div class="card-back">
+        <h2 id="traditional"></h2>
+        <h3 id="pinyin"></h3>
 
-<div class="card" onclick="flipCard()">
+        <div class="example">
+          <p id="exampleEnglish"></p>
+          <p id="exampleChinese"></p>
+          <p id="examplePinyin"></p>
+        </div>
+      </div>
 
-<div id="cardInner" class="card-inner">
+    </div>
+  </div>
 
-<div class="card-front">
-
-<h2 id="english"></h2>
-
-</div>
-
-<div class="card-back">
-
-<h2 id="traditional"></h2>
-
-<h3 id="pinyin"></h3>
-
-<div class="example">
-
-<p id="exampleEnglish"></p>
-
-<p id="exampleChinese"></p>
-
-<p id="examplePinyin"></p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<script src="words.js"></script>
-app.jsscript>
+  <script src="words.js"></script>
+  app.jsscript>
 
 </body>
 
