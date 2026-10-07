@@ -1,40 +1,55 @@
-let currentWord = null;
+const words = [
+{
+    english: "I",
+    traditional: "我",
+    pinyin: "wǒ",
+    example: {
+        english: "I am here.",
+        traditional: "我在這裡。",
+        pinyin: "Wǒ zài zhèlǐ."
+    }
+},
+{
+    english: "you",
+    traditional: "你",
+    pinyin: "nǐ",
+    example: {
+        english: "You are here.",
+        traditional: "你在這裡。",
+        pinyin: "Nǐ zài zhèlǐ."
+    }
+}
+];
+
+let currentWord;
 
 function newCard() {
 
+    currentWord =
+        words[Math.floor(Math.random() * words.length)];
 
-currentWord = words[Math.floor(Math.random() * words.length)];
-
-document.getElementById("wordCount").innerText =
-    "Words loaded: " + words.length;
-
-    document.getElementById("english").innerText =
+    document.getElementById("english").textContent =
         currentWord.english;
 
-    document.getElementById("traditional").innerText =
+    document.getElementById("traditional").textContent =
         currentWord.traditional;
 
-    document.getElementById("pinyin").innerText =
+    document.getElementById("pinyin").textContent =
         currentWord.pinyin;
 
-    document.getElementById("exampleEnglish").innerText =
+    document.getElementById("exampleEnglish").textContent =
         currentWord.example.english;
 
-    document.getElementById("exampleChinese").innerText =
+    document.getElementById("exampleChinese").textContent =
         currentWord.example.traditional;
 
-    document.getElementById("examplePinyin").innerText =
+    document.getElementById("examplePinyin").textContent =
         currentWord.example.pinyin;
-
-    document.getElementById("cardInner")
-        .classList.remove("flipped");
 }
 
 function flipCard() {
-
     document.getElementById("cardInner")
         .classList.toggle("flipped");
-
 }
 
-newCard();
+window.onload = newCard;
