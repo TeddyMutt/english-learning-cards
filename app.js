@@ -1,9 +1,32 @@
+let activeWords = [];
 let currentWord = null;
+
+function setCategory(category) {
+
+    if (category === "all") {
+
+        activeWords = [
+            ...categories.people,
+            ...categories.actions,
+            ...categories.places,
+            ...categories.questions,
+            ...categories.describing,
+            ...categories.grammar
+        ];
+
+    } else {
+
+        activeWords = categories[category];
+
+    }
+
+    newCard();
+}
 
 function newCard() {
 
     currentWord =
-        words[Math.floor(Math.random() * words.length)];
+        activeWords[Math.floor(Math.random() * activeWords.length)];
 
     document.getElementById("english").textContent =
         currentWord.english;
@@ -28,10 +51,14 @@ function newCard() {
 }
 
 function flipCard() {
+
     document.getElementById("cardInner")
         .classList.toggle("flipped");
+
 }
 
-window.onload = function() {
-    newCard();
+window.onload = function () {
+
+    setCategory("all");
+
 };
