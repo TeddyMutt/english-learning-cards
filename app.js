@@ -1,7 +1,5 @@
 let progress =
-    JSON.parse(
-        localStorage.getItem("progress")
-    ) || {};
+    JSON.parse(localStorage.getItem("progress")) || {};
 
 let currentWord = null;
 
@@ -11,8 +9,7 @@ function newCard() {
 
     words.forEach(word => {
 
-        const status =
-            progress[word.english];
+        let status = progress[word.english];
 
         if (status === "practice") {
 
@@ -35,17 +32,13 @@ function newCard() {
             for (let i = 0; i < 2; i++) {
                 weightedWords.push(word);
             }
-
         }
 
     });
 
     currentWord =
         weightedWords[
-            Math.floor(
-                Math.random() *
-                weightedWords.length
-            )
+            Math.floor(Math.random() * weightedWords.length)
         ];
 
     document.getElementById("english").textContent =
@@ -66,20 +59,16 @@ function newCard() {
     document.getElementById("examplePinyin").textContent =
         currentWord.example.pinyin;
 
-    document
-        .getElementById("cardInner")
+    document.getElementById("cardInner")
         .classList.remove("flipped");
 
     updateCardColour();
-
 }
 
 function flipCard() {
 
-    document
-        .getElementById("cardInner")
+    document.getElementById("cardInner")
         .classList.toggle("flipped");
-
 }
 
 function markGood() {
@@ -88,8 +77,9 @@ function markGood() {
 
     saveProgress();
 
-    newCard();
+    updateCardColour();
 
+    setTimeout(newCard, 500);
 }
 
 function markLearning() {
@@ -98,8 +88,9 @@ function markLearning() {
 
     saveProgress();
 
-    newCard();
+    updateCardColour();
 
+    setTimeout(newCard, 500);
 }
 
 function markPractice() {
@@ -108,8 +99,9 @@ function markPractice() {
 
     saveProgress();
 
-    newCard();
+    updateCardColour();
 
+    setTimeout(newCard, 500);
 }
 
 function saveProgress() {
@@ -120,7 +112,6 @@ function saveProgress() {
     );
 
     updateProgress();
-
 }
 
 function updateProgress() {
@@ -131,7 +122,7 @@ function updateProgress() {
 
     words.forEach(word => {
 
-        const status =
+        let status =
             progress[word.english];
 
         if (status === "good")
@@ -145,83 +136,74 @@ function updateProgress() {
 
     });
 
-    const tested =
+    let tested =
         good + learning + practice;
 
-    const percentage =
+    let untested =
+        words.length - tested;
+
+    let percentage =
         Math.round(
             (good / words.length) * 100
         );
 
-    document.getElementById(
-        "progress"
-    ).innerHTML =
-
+    document.getElementById("progress")
+        .innerHTML =
         `
         🟢 Good: ${good}<br>
         🟡 Learning: ${learning}<br>
         🔴 Needs Practice: ${practice}<br>
-        ⚪ Untested: ${words.length - tested}<br><br>
-        Progress: ${percentage}%
+        ⚪ Untested: ${untested}<br><br>
+        Overall Progress: ${percentage}%
         `;
-
 }
 
 function updateCardColour() {
 
-    const card =
+    let front =
         document.querySelector(".card-front");
 
-    card.classList.remove(
+    front.classList.remove(
         "good",
         "learning",
         "practice",
         "untested"
     );
 
-    const status =
+    let status =
         progress[currentWord.english];
 
     if (status === "good") {
 
-        card.classList.add("good");
+        front.classList.add("good");
 
     } else if (status === "learning") {
 
-        card.classList.add("learning");
+        front.classList.add("learning");
 
     } else if (status === "practice") {
 
-        card.classList.add("practice");
+        front.classList.add("practice");
 
     } else {
 
-        card.classList.add("untested");
+        front.classList.add("untested");
 
     }
-
 }
 
 function resetProgress() {
 
-    if (
-        confirm(
-            "Reset all progress?"
-        )
-    ) {
+    if (confirm("Reset all progress?")) {
 
-        localStorage.removeItem(
-            "progress"
-        );
+        localStorage.removeItem("progress");
 
         progress = {};
 
         updateProgress();
 
         newCard();
-
     }
-
 }
 
 window.onload = function () {
@@ -229,5 +211,4 @@ window.onload = function () {
     updateProgress();
 
     newCard();
-
 };
