@@ -1,15 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Learning Cards</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
 <h1>English Learning Cards</h1>
 
-<div>
+<button onclick="newCard()">Next Card</button>
 
-<button onclick="setCategory('all')">All</button>
-<button onclick="setCategory('people')">People</button>
-<button onclick="setCategory('actions')">Actions</button>
-<button onclick="setCategory('places')">Places</button>
-<button onclick="setCategory('questions')">Questions</button>
+<div class="card" onclick="flipCard()">
+
+<div id="cardInner" class="card-inner">
+
+<div class="card-front">
+<h2 id="english"></h2>
+</div>
+
+<div class="card-back">
+<h2 id="traditional"></h2>
+<h3 id="pinyin"></h3>
+
+<hr>
+
+<p id="exampleEnglish"></p>
+<p id="exampleChinese"></p>
+<p id="examplePinyin"></p>
+</div>
 
 </div>
 
-<br>
+</div>
 
-<button onclick="newCard()">Next Card</button>
+<script src="words.js"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>
