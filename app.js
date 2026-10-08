@@ -1,27 +1,4 @@
-const words = [
-{
-    english: "I",
-    traditional: "我",
-    pinyin: "wǒ",
-    example: {
-        english: "I am here.",
-        traditional: "我在這裡。",
-        pinyin: "Wǒ zài zhèlǐ."
-    }
-},
-{
-    english: "you",
-    traditional: "你",
-    pinyin: "nǐ",
-    example: {
-        english: "You are here.",
-        traditional: "你在這裡。",
-        pinyin: "Nǐ zài zhèlǐ."
-    }
-}
-];
-
-let currentWord;
+let currentWord = null;
 
 function newCard() {
 
@@ -45,6 +22,9 @@ function newCard() {
 
     document.getElementById("examplePinyin").textContent =
         currentWord.example.pinyin;
+
+    document.getElementById("cardInner")
+        .classList.remove("flipped");
 }
 
 function flipCard() {
@@ -52,4 +32,6 @@ function flipCard() {
         .classList.toggle("flipped");
 }
 
-window.onload = newCard;
+window.onload = function() {
+    newCard();
+};
